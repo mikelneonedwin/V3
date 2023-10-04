@@ -12,6 +12,5 @@ function upload(path: string, dataurl: string):Promise<string> {
 
 export async function patchFile(dir: string, data: string):Promise<string> {
     const url = await upload(dir, data);
-    await set(dbRef(db, dir), url);
     return url;
 };

@@ -1,8 +1,8 @@
 import { child, get, ref } from "firebase/database";
 import { db } from "~/firebase";
 
-export async function getUser(userId:string): Promise<{ exists(): boolean, val(): { name: string, password: string, email: string, uploads?: Record<number, object> } | undefined }> {
-    const users = await get(child(ref(db), 'V3'))
+export async function getUser(userId:string): Promise<{ exists(): boolean, val(): { name: string, key: string, password: string, email: string, id: string, uploads?: Record<number, object> } | undefined }> {
+    const user = await get(child(ref(db), 'V3'))
     .then(snapshot => {
         if(!snapshot.exists()) return null;
         const keys = Object.keys(snapshot.val());
@@ -10,5 +10,5 @@ export async function getUser(userId:string): Promise<{ exists(): boolean, val()
         if(identity) return snapshot.val()[identity];
         return null;
     })
-    return { exists: () => users ? true : false, val: () => users }
+    return { exists: () => user ? true : false, val: () => ({ ...user, key: `${user!.name.replaceAll(" ", "-")}-${user!.id}` }) }
 }

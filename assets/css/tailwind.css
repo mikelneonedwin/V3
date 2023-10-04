@@ -46,3 +46,7 @@ form.submit div.input div.btn button {
 i.error {
     @apply text-red-400 font-semibold not-italic;
 }
+
+div[style]::-webkit-scrollbar {
+    width: 0px;
+}

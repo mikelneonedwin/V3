@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import data from '~/utils/data.json';
     const day = (new Date().getDay()) + 1;
-    const form = reactive({ link: '', repo: '', desc: '', day: 0, files: [] as Blob[] });
+    const form = reactive({ link: '', repo: '', desc: '', day, files: [] as Blob[] });
     const { languages, tools, frameworks } = reactive(data);
     const input = ref(null) as unknown as HTMLInputElement;
 
@@ -19,16 +19,22 @@
     const btn = ref('SUBMIT');
 
     function handleSubmit(){
-        if(form.files.length === 0){
-            fileError.value = 'UPLOAD AT LEAST ONE FILE';
-            return setTimeout(() => fileError.value = false, 1500);
-        }
         const data = new FormData();
         data.append('description', form.desc);
+        data.append('day', String(form.day));
         if(form.link) data.append('link', form.link);
         if(form.repo) data.append('repo', form.repo);
+        if(languages.filter(a => a.selected).length) data.append('languages', JSON.stringify(languages.filter(a => a.selected).map(a => a.text)));
+        if(tools.filter(a => a.selected).length) data.append('tools', JSON.stringify(tools.filter(a => a.selected).map(a => a.text)));
+        if(frameworks.filter(a => a.selected).length) data.append('frameworks', JSON.stringify(frameworks.filter(a => a.selected).map(a => a.text)));
         form.files.forEach((file, index) => data.append(`file-${index}`, file, file.name));
-        // $fetch('')
+        btn.value = "Submitting...";
+        $fetch('/api/submit', {
+            method: 'post',
+            body: data
+        })
+        .then(() => btn.value = "SUBMITTED!")
+        .catch(() => btn.value = "Error Occured");
     }
 
     const { data: daysLeft } = (await useFetch('/api/daysleft')).data.value! as { data: number[] };
@@ -79,8 +85,8 @@
                     <div>
                         <span>Uploading for day:</span>
                     </div>
-                    <div class="whitespace-nowrap w-full overflow-x-auto">
-                        <button type="button" :class="{'!bg-[#00DC82]': form.day == day}" v-for="day in daysLeft" :key="day" class="text-white btn">{{ day }}</button>
+                    <div class="!whitespace-nowrap !block btn w-full overflow-x-auto" style="scrollbar-width: none">
+                        <button type="button" @click="form.day = day" :class="{'!bg-[#00DC82]': form.day == day}" v-for="day in daysLeft" :key="day" class="text-white btn">{{ day }}</button>
                     </div>
                 </div>
                 <div class="input">
@@ -112,7 +118,7 @@
                     <div class="grid grid-cols-2">
                         <h1>File (1MB MAX)</h1>
                         <div class="flex items-end justify-end">
-                            <button @click="input.click()" class="material-icons rounded-full p-1.5 bg-[#00DC82]">arrow_circle_down</button>
+                            <button type="button" @click="input.click()" class="material-icons rounded-full p-1.5 bg-[#00DC82]">arrow_circle_down</button>
                         </div>
                     </div>
                     <div class="mt-4 flex flex-col gap-3 lg:grid lg:grid-cols-2">
