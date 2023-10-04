@@ -37,8 +37,12 @@ form.submit div.input span {
     @apply text-sm font-bold text-white/50;
 }
 form.submit div.input {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col gap-2 w-full;
 }
 form.submit div.input div.btn button {
     @apply px-3 pt-1.5 pb-2 rounded-md mb-2.5 mr-2 text-base bg-[#304050];
+}
+
+i.error {
+    @apply text-red-400 font-semibold not-italic;
 }

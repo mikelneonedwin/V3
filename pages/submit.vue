@@ -66,6 +66,10 @@
                         <button type="button" :class="{'!bg-[#00DC82]': framework.selected}" @click="framework.selected = !framework.selected" v-for="framework in languages" :key="framework.text">{{ framework.text }}</button>
                     </div>
                 </div>
+
+                <div>
+                    <h1>File (1MB MAX)</h1>
+                </div>
             </form>
         </div>
     </section>
