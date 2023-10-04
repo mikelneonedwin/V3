@@ -55,15 +55,11 @@
     ],
     "tools": [
         {
-            "text": "Brimble",
-            "selected": false
-        },
-        {
-            "text": "Railway",
-            "selected": false
-        },
-        {
             "text": "BitBucket",
+            "selected": false
+        },
+        {
+            "text": "Brimble",
             "selected": false
         },
         {
@@ -92,6 +88,10 @@
         },
         {
             "text": "Node.js",
+            "selected": false
+        },
+        {
+            "text": "Railway",
             "selected": false
         },
         {

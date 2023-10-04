@@ -64,8 +64,9 @@
                 <i class="error" v-if="error.confirm">Passwords don't match</i>
             </div>
             <div class="input">
-                <div class="btn">
+                <div class="btn grid md:grid-cols-2 grid-rows-2 md:grid-rows-1 md:gap-4">
                     <button type="submit" class="!bg-[#00DC82] mt-2 !text-white !font-semibold !text-lg w-full">{{btn}}</button>
+                    <button @click="navigateTo('/login')" type="button" class="!bg-[#00DC82] mt-2 !text-white !font-semibold !text-lg w-full">Have an account?</button>
                 </div>
             </div>
         </form>

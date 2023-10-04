@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <section class="md:flex items-start h-screen w-screen box-border">
+    <section class="md:flex items-start h-screen w-screen overflow-x-hidden box-border">
         <nav @click="nav = false" :class="{'w-0': !nav, 'w-full': nav}" class="md:w-[30%] z-20 grid grid-cols-2 items-start fixed top-0 md:static overflow-x-hidden md:block transition-all duration-300 h-full md:p-2 pt-0 text-white lg:w-[17%] md:bg-[#202123]">
             <div class="bg-[#202123] md:bg-transparent h-full md:h-auto">
                 <div class="flex gap-2 px-3.5 items-center">
@@ -24,8 +24,6 @@
         </main>
     </section>
     <section>
-        <div class="top-0 left-0 z-10 bottom-0 w-4 md:hidden fixed text-white flex items-center">
-            <button @click="nav = true" class="material-icons tracking-[-15px] bg-[#00DC82] p-4 pl-0 rounded-r-lg text-left">chevron_right chevron_right</button>
-        </div>
+        <div @click="nav = true" class="top-0 material-icons right-0 p-5 rounded-bl-xl z-10 w-4 h-4 bg-[#00DC82] md:hidden fixed text-white justify-center flex items-center">arrow_circle_down</div>
     </section>
 </template>
