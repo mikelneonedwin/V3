@@ -19,6 +19,10 @@
     const btn = ref('SUBMIT');
 
     function handleSubmit(){
+        if(!form.link && !form.repo && form.files.length == 0) {
+            fileError.value = "PROVIDE A LINK, REPO or FILE";
+            return setTimeout(() => fileError.value = false);
+        }
         const data = new FormData();
         data.append('description', form.desc);
         data.append('day', String(form.day));
@@ -85,7 +89,7 @@
                     <div>
                         <span>Uploading for day:</span>
                     </div>
-                    <div class="!whitespace-nowrap !block btn w-full overflow-x-auto" style="scrollbar-width: none">
+                    <div class="!whitespace-nowrap !block btn w-full overflow-x-auto scroll" style="scrollbar-width: none">
                         <button type="button" @click="form.day = day" :class="{'!bg-[#00DC82]': form.day == day}" v-for="day in daysLeft" :key="day" class="text-white btn">{{ day }}</button>
                     </div>
                 </div>

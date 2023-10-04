@@ -47,6 +47,6 @@ i.error {
     @apply text-red-400 font-semibold not-italic;
 }
 
-div[style]::-webkit-scrollbar {
+div.scroll::-webkit-scrollbar {
     width: 0px;
 }
