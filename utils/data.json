@@ -1,0 +1,196 @@
+{
+    "languages": [
+        {
+            "text": "C",
+            "selected": false
+        },
+        {
+            "text": "C#",
+            "selected": false
+        },
+        {
+            "text": "C++",
+            "selected": false
+        },
+        {
+            "text": "CSS",
+            "selected": false
+        },
+        {
+            "text": "Dart",
+            "selected": false
+        },
+        {
+            "text": "HTML",
+            "selected": false
+        },
+        {
+            "text": "Java",
+            "selected": false
+        },
+        {
+            "text": "JavaScript",
+            "selected": false
+        },
+        {
+            "text": "PHP",
+            "selected": false
+        },
+        {
+            "text": "Python",
+            "selected": false
+        },
+        {
+            "text": "Ruby",
+            "selected": false
+        },
+        {
+            "text": "SASS",
+            "selected": false
+        },
+        {
+            "text": "TypeScript",
+            "selected": false
+        }
+    ],
+    "tools": [
+        {
+            "text": "Brimble",
+            "selected": false
+        },
+        {
+            "text": "Railway",
+            "selected": false
+        },
+        {
+            "text": "BitBucket",
+            "selected": false
+        },
+        {
+            "text": "PostgreSQL",
+            "selected": false
+        },
+        {
+            "text": "Firebase",
+            "selected": false
+        },
+        {
+            "text": "GitHub",
+            "selected": false
+        },
+        {
+            "text": "GitLab",
+            "selected": false
+        },
+        {
+            "text": "MongoDB",
+            "selected": false
+        },
+        {
+            "text": "Netlify",
+            "selected": false
+        },
+        {
+            "text": "Node.js",
+            "selected": false
+        },
+        {
+            "text": "React-Native",
+            "selected": false
+        },
+        {
+            "text": "SQL",
+            "selected": false
+        },
+        {
+            "text": "Vercel",
+            "selected": false
+        }
+    ],
+    "frameworks": [
+        {
+            "text": "AOS",
+            "selected": false
+        },
+        {
+            "text": "Angular",
+            "selected": false
+        },
+        {
+            "text": "AngularJS",
+            "selected": false
+        },
+        {
+            "text": "Bootstrap",
+            "selected": false
+        },
+        {
+            "text": "Chart.js",
+            "selected": false
+        },
+        {
+            "text": "Django",
+            "selected": false
+        },
+        {
+            "text": "Express.js",
+            "selected": false
+        },
+        {
+            "text": "Laravel",
+            "selected": false
+        },
+        {
+            "text": "Mantine UI",
+            "selected": false
+        },
+        {
+            "text": "Material UI",
+            "selected": false
+        },
+        {
+            "text": "Next.js",
+            "selected": false
+        },
+        {
+            "text": "Nuxt.js",
+            "selected": false
+        },
+        {
+            "text": "Pinia",
+            "selected": false
+        },
+        {
+            "text": "React.js",
+            "selected": false
+        },
+        {
+            "text": "Redux",
+            "selected": false
+        },
+        {
+            "text": "Ruby On Rails",
+            "selected": false
+        },
+        {
+            "text": "Svelte",
+            "selected": false
+        },
+        {
+            "text": "TailwindCSS",
+            "selected": false
+        },
+        {
+            "text": "Vue.js",
+            "selected": false
+        },
+        {
+            "text": "Vuex",
+            "selected": false
+        },
+        {
+            "text": "jQuery",
+            "selected": false
+        }
+    ]
+}

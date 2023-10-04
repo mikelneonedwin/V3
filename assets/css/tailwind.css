@@ -29,12 +29,16 @@ progress::-moz-progress-bar {
     @apply appearance-none bg-blue-500;
 }
 
-form fieldset span {
-    @apply text-sm font-bold;
+/* form.submit */
+form.submit input, textarea {
+    @apply w-full bg-[#202C37] p-4 rounded-lg placeholder:text-white/50 text-white/80 focus:outline-none text-base;
 }
-form fieldset {
-    @apply flex mt-4 md:mt-0 flex-col gap-3 md:w-1/2;
+form.submit div.input span {
+    @apply text-sm font-bold text-white/50;
 }
-form fieldset textarea, form fieldset input, form fieldset select {
-    @apply bg-inherit text-lg p-3 rounded-md border border-white focus:outline-none resize-none;
+form.submit div.input {
+    @apply flex flex-col gap-2;
+}
+form.submit div.input div.btn button {
+    @apply px-3 pt-1.5 pb-2 rounded-md mb-2.5 mr-2 text-base bg-[#304050];
 }

@@ -1,34 +1,71 @@
 <script setup>
+    import data from '~/utils/data.json';
     const day = (new Date().getDay()) + 1;
+    const form = reactive({link: process.client ? location.href : '', repo: process.client ? location.href : '', desc: 'Sample project for a storage bucket, built for a thirty days coding challenge'})
+    const { languages, tools, frameworks } = reactive(data);
 </script>
 
 <template>
     <Title>Submit Project</Title>
-    <section class="md:mt-2">
+    <section class="md:mt-2 mb-4">
         <h1 class="text-3xl font-bold text-[#00DC82]">Submit Project</h1>
         <div class="mt-8 text-2xl font-bold">
             <h3>It's day {{ day }}</h3>
-            <form class="mt-8 flex flex-col gap-8">
-                <div class="md:flex items-start gap-8">
-                    <fieldset>
-                        <span>Uploading for day:</span>
-                        <select class="appearance-none">
-                            <option class="bg-[#343541]" v-for="i in Array(30).fill(1).map((a,b) => a + b)" :value="i">{{ i }}</option>
-                        </select>
-                    </fieldset>
-                    <fieldset>
-                        <span>Live Link (Optional)</span>
-                        <input type="url" placeholder="http://example.com">
-                    </fieldset>
+            <form class="mt-8 submit flex flex-col gap-4">               
+                <div class="input">
+                    <div>
+                    <span>Live Link (Optional)</span>
+                    </div>
+                    <input
+                    type="url"
+                    v-model="form.link"
+                    placeholder="https://www.example.com"
+                    />
                 </div>
-                <fieldset>
-                    <span>Repo Link (Optional)</span>
-                    <input type="url" placeholder="http://github.com/{username}/{link}">
-                </fieldset>
-                <fieldset>
-                    <span>Describe your project (Required)</span>
-                    <textarea placeholder="Stack, Languages, About"></textarea>
-                </fieldset>
+                <div class="input">
+                    <div>
+                    <span>Repository Link (Optional)</span>
+                    </div>
+                    <input
+                    type="url"
+                    v-model="form.repo"
+                    placeholder="https://www.example.com"
+                    />
+                </div>
+                <div class="input">
+                    <div>
+                    <span>Description (Required)</span>
+                    </div>
+                    <textarea
+                    v-model="form.desc"
+                    required
+                    placeholder="Describe your work"
+                    ></textarea>
+                </div>
+                <div class="input">
+                    <div>
+                        <span>Frameworks & Libraries</span>
+                    </div>
+                    <div class="btn">
+                        <button type="button" :class="{'!bg-[#00DC82]': framework.selected}" @click="framework.selected = !framework.selected" v-for="framework in frameworks" :key="framework.text">{{ framework.text }}</button>
+                    </div>
+                </div>
+                <div class="input">
+                    <div>
+                        <span>Tools (Hosting & Database)</span>
+                    </div>
+                    <div class="btn">
+                        <button type="button" :class="{'!bg-[#00DC82]': framework.selected}" @click="framework.selected = !framework.selected" v-for="framework in tools" :key="framework.text">{{ framework.text }}</button>
+                    </div>
+                </div>
+                <div class="input">
+                    <div>
+                        <span>Languages</span>
+                    </div>
+                    <div class="btn">
+                        <button type="button" :class="{'!bg-[#00DC82]': framework.selected}" @click="framework.selected = !framework.selected" v-for="framework in languages" :key="framework.text">{{ framework.text }}</button>
+                    </div>
+                </div>
             </form>
         </div>
     </section>
