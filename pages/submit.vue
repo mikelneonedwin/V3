@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import data from '~/utils/data.json';
     const day = (new Date().getDay()) + 1;
-    const form = reactive({ link: '', repo: '', desc: '', files: [] as Blob[] });
+    const form = reactive({ link: '', repo: '', desc: '', day: 0, files: [] as Blob[] });
     const { languages, tools, frameworks } = reactive(data);
     const input = ref(null) as unknown as HTMLInputElement;
 
@@ -9,27 +9,42 @@
         const [ file ]  = (target as HTMLInputElement).files!;
         const size = file.size / 1024 ** 2;
         if(size > 1){
-            fileError.value = true;
+            fileError.value = 'UPLOAD LIMIT IS 1MB';
             return setTimeout(() => fileError.value = false, 1500);
         }
         form.files.push(file);
     }
 
-    const fileError = ref(false);
+    const fileError = ref(false) as unknown as { value: string | boolean };
     const btn = ref('SUBMIT');
+
+    function handleSubmit(){
+        if(form.files.length === 0){
+            fileError.value = 'UPLOAD AT LEAST ONE FILE';
+            return setTimeout(() => fileError.value = false, 1500);
+        }
+        const data = new FormData();
+        data.append('description', form.desc);
+        if(form.link) data.append('link', form.link);
+        if(form.repo) data.append('repo', form.repo);
+        form.files.forEach((file, index) => data.append(`file-${index}`, file, file.name));
+        // $fetch('')
+    }
+
+    const { data: daysLeft } = (await useFetch('/api/daysleft')).data.value! as { data: number[] };
 </script>
 
 <template>
     <Title>Submit Project</Title>
     <div v-if="fileError" class="fixed top-0 flex items-center justify-center z-10 left-0 h-full w-full">
-        <div class="md:w-[40%] w-[90%] mx-auto bg-gray-700 text-center p-4 rounded-2xl font-bold text-white z-20">UPLOAD LIMIT IS 1MB</div>
+        <div class="md:w-[40%] w-[90%] mx-auto bg-gray-700 text-center p-4 rounded-2xl font-bold text-white z-20">{{ fileError }}</div>
         <div class="fixed top-0 left-0 w-full h-full z-10 bg-black/50"></div>
     </div>
     <section class="md:mt-2 mb-4">
         <h1 class="text-3xl font-bold text-[#00DC82]">Submit Project</h1>
         <div class="mt-8 text-2xl font-bold">
             <h3>It's day {{ day }} of 30</h3>
-            <form class="mt-8 submit flex flex-col gap-4">               
+            <form @submit.prevent="handleSubmit" class="mt-8 submit flex flex-col gap-4">               
                 <div class="input">
                     <div>
                         <span>Live Link (Optional)</span>
@@ -59,6 +74,14 @@
                         required
                         placeholder="Describe your work"
                     ></textarea>
+                </div>
+                <div class="input">
+                    <div>
+                        <span>Uploading for day:</span>
+                    </div>
+                    <div class="whitespace-nowrap w-full overflow-x-auto">
+                        <button type="button" :class="{'!bg-[#00DC82]': form.day == day}" v-for="day in daysLeft" :key="day" class="text-white btn">{{ day }}</button>
+                    </div>
                 </div>
                 <div class="input">
                     <div>
