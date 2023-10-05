@@ -1,9 +1,6 @@
 <script setup>
-    const countdown = '03:30:00';
-
     const { data:stats } = await useFetch('/api/leaderboards');
     stats.value.forEach((a) => a.img = svgUrl(a.name));
-
 </script>
 
 <template>

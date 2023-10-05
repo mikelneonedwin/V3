@@ -28,6 +28,17 @@
     const languages = ref(null);
     const state = ref('save');
     const form = ref(null);
+    const del = ref('delete');
+
+    function deleteDay(){
+        del.value = 'refresh';
+        $fetch(`/api/delete/${Day.value}`)
+        .then(() => {
+            del.value = 'check_circle';
+            setTimeout(() => location.reload(), 1000);
+        })
+        .catch(() => del.value = 'warning');
+    }
 </script>
 
 <template>
@@ -44,7 +55,7 @@
                 </div>
                 <div class="flex mt-2 -translate-y-1 md:mt-0 items-center gap-3">
                     <h2 class="text-2xl font-bold">Action: </h2>
-                    <button type="button" class="material-icons bg-[#00DC82] p-2 rounded-lg">delete</button>
+                    <button type="button" class="material-icons bg-[#00DC82] p-2 rounded-lg" @click="deleteDay">{{del}}</button>
                     <button type="submit" class="material-icons bg-[#00DC82] p-2 rounded-lg">{{state}}</button>
                 </div>
             </div>
