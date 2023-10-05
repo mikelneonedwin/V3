@@ -28,10 +28,10 @@ export default defineEventHandler(async event => {
     
     const toDB = {
         description: data.description,
+        link: data.link,
         ...( data.languages ? { languages: data.languages } : {}),
         ...( data.tools ? { tools: data.tools } : {}),
         ...( data.frameworks ? { frameworks: data.frameworks } : {}),
-        ...( data.link ? { link: data.link } : {} ),
         ...( data.repo ? { repo: data.repo } : {} ),
     } as Record<string, any>
 

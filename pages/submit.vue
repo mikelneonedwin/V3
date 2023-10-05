@@ -26,7 +26,7 @@
         const data = new FormData();
         data.append('description', form.desc);
         data.append('day', String(form.day));
-        if(form.link) data.append('link', form.link);
+        data.append('link', form.link);
         if(form.repo) data.append('repo', form.repo);
         if(languages.filter(a => a.selected).length) data.append('languages', JSON.stringify(languages.filter(a => a.selected).map(a => a.text)));
         if(tools.filter(a => a.selected).length) data.append('tools', JSON.stringify(tools.filter(a => a.selected).map(a => a.text)));
@@ -57,10 +57,11 @@
             <form @submit.prevent="handleSubmit" class="mt-8 submit flex flex-col gap-4">               
                 <div class="input">
                     <div>
-                        <span>Live Link (Optional)</span>
+                        <span>Live Link (Required)</span>
                     </div>
                     <input
                         type="url"
+                        required
                         v-model="form.link"
                         placeholder="https://www.example.com"
                     />

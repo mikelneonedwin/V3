@@ -24,7 +24,7 @@
                     </div>
                     <div v-if="screenx.link">
                         <h3 class="font-semibold text-green-500">Live Link:</h3>
-                        <a :href="screenx.repo" target="_blank"><p>{{ screenx.link }}</p></a>
+                        <a :href="screenx.link" target="_blank"><p>{{ screenx.link }}</p></a>
                     </div>
                     <div v-if="screenx.repo">
                         <h3 class="font-semibold text-green-500">Repository:</h3>
