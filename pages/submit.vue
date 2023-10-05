@@ -120,7 +120,7 @@
 
                 <div>
                     <div class="grid grid-cols-2">
-                        <h1>File (1MB MAX)</h1>
+                        <h1 class="whitespace-pre">File (1MB MAX)</h1>
                         <div class="flex items-end justify-end">
                             <button type="button" @click="input.click()" class="material-icons rounded-full p-1.5 bg-[#00DC82]">arrow_circle_down</button>
                         </div>
