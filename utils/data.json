@@ -99,6 +99,10 @@
             "selected": false
         },
         {
+            "text": "Render",
+            "selected": false
+        },
+        {
             "text": "SQL",
             "selected": false
         },
