@@ -39,7 +39,7 @@ form.submit div.input span {
 form.submit div.input {
     @apply flex flex-col gap-2 w-full;
 }
-form.submit div.input div.btn button {
+form.submit div.input div.btn button, button.btnx, a.btnx {
     @apply px-3 pt-1 pb-1.5 rounded-md mb-2.5 mr-2 text-base bg-[#304050];
 }
 
@@ -49,4 +49,21 @@ i.error {
 
 div.scroll::-webkit-scrollbar {
     width: 0px;
+}
+div.scroll {
+    scrollbar-width: none;
+}
+
+.make-scroll {
+    @apply whitespace-pre mt-1;
+    scrollbar-width: 0;
+}
+.make-scroll>* {
+    @apply text-white;
+}
+.make-sroll::-webkit-scrollbar {
+    width: 0px;
+}
+h3 + p, h3 + a>p {
+    @apply text-white/90 text-base;
 }

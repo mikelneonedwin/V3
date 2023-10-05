@@ -1,5 +1,3 @@
-import { getUser } from "../utils/getUser";
-
 export default defineEventHandler(async event => {
     const userId = getCookie(event, '_v3_id');
 
