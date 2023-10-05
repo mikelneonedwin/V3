@@ -11,7 +11,7 @@
     <section class="md:mt-2">
         <h1 class="text-3xl font-bold text-[#00DC82]">Leaderboards</h1>
         <div class="mt-8 flex flex-col gap-4">
-            <NuxtLink :to="'/stats/' + user.id" click="navigateTo('/' + user.max)" v-for="(user, index) in stats" :key="index" class="bg-[#444654] p-2 rounded-lg">
+            <NuxtLink :class="{'opacity-50': !user.projects}" :to="'/stats/' + user.id" click="navigateTo('/' + user.max)" v-for="(user, index) in stats" :key="index" class="bg-[#444654] p-2 rounded-lg">
                 <div class="flex items-center gap-2 px-0.5">
                     <img :src="user.img" class="rounded-lg h-[3.5rem]">
                     <div class="flex w-full items-start flex-col gap-0">
