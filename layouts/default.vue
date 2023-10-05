@@ -4,8 +4,8 @@
 
 <template>
     <section class="md:flex items-start h-screen w-screen overflow-x-hidden box-border">
-        <nav @click="nav = false" :class="{'w-0': !nav, 'w-full': nav}" class="md:w-[30%] z-20 grid grid-cols-2 items-start fixed top-0 md:static overflow-x-hidden md:block transition-all duration-300 h-full md:p-2 pt-0 text-white lg:w-[17%] md:bg-[#202123]">
-            <div class="bg-[#202123] md:bg-transparent h-full md:h-auto">
+        <nav @click="nav = false" :class="{'w-0': !nav, 'w-full': nav}" class="md:w-[30%] z-20 grid grid-cols-5 items-start fixed top-0 md:static overflow-x-hidden md:block transition-all duration-300 h-full md:p-2 pt-0 text-white lg:w-[17%] md:bg-[#202123]">
+            <div class="bg-[#202123] md:bg-transparent col-span-3 h-full md:h-auto">
                 <div class="flex gap-2 px-3.5 items-center">
                     <img src="/favicon.ico" class="h-10">
                     <span class="text-3xl font-bold">V3</span>
@@ -17,7 +17,7 @@
                     <NuxtLink href="/info"><i class="material-icons">info</i>Info</NuxtLink>
                 </div>
             </div>
-            <div class="h-full bg-black/70 md:hidden"></div>
+            <div class="h-full col-span-2 bg-black/70 md:hidden"></div>
         </nav>
         <main class="bg-[#343740] px-4 text-white font-medium text-lg pt-2 overflow-y-auto h-full md:w-[70%] lg:w-[83%]">
             <slot/>
