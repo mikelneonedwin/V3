@@ -71,3 +71,7 @@ h3 + p, h3 + a>p {
 routerlink {
     @apply hidden;
 }
+
+main>section {
+    @apply md:mt-2 w-full mb-4;
+}
