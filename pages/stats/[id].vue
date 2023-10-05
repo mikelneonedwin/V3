@@ -7,7 +7,7 @@
 
 <template>
     <Title>Stats for "{{ user.name }}"</Title>
-    <section v-if="Day" class="md:mt-2 mb-4">
+    <section v-if="Day" class="md:mt-2 w-full mb-4">
         <div>
             <h1 class="text-3xl font-bold text-[#00DC82]">{{ user.name }}</h1>
             <div class="mt-8">
@@ -45,10 +45,10 @@
                 </div>
             </div>
         </div>
-        <div v-if="screenx.files" class="mt-4">
+        <div v-if="screenx.files" class="mt-4 w-full">
             <h2 class="text-2xl font-bold mr-2">Uploads for Day {{ Day }}</h2>
-            <div class="grid mt-2 grid-cols-1 gap-2">
-                <a target="_blank" v-for="(file,index) in screenx.files" :key="file" :href="file" class="w-full truncate text-white/70 text-sm">{{index + 1}}. {{file}}</a>
+            <div class="block w-full !mt-2 whitespace-pre overflow-x-auto scroll">
+                <div class="h-40 inline-block w-72 shadow-lg rounded-xl bg-center bg-contain bg-no-repeat mr-5" v-for="(file, index) in screenx.files" :style="`background-image: url('${file}');`"></div>
             </div>
         </div>
     </section>

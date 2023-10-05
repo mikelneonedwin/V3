@@ -67,3 +67,7 @@ div.scroll {
 h3 + p, h3 + a>p {
     @apply text-white/90 text-base;
 }
+
+routerlink {
+    @apply hidden;
+}

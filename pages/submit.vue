@@ -121,7 +121,7 @@
 
                 <div>
                     <div class="grid grid-cols-2">
-                        <h1 class="whitespace-pre">File (1MB MAX)</h1>
+                        <h1 class="whitespace-pre">IMAGES (1MB MAX)</h1>
                         <div class="flex items-end justify-end">
                             <button type="button" @click="input.click()" class="material-icons rounded-full p-1.5 bg-[#00DC82]">arrow_circle_down</button>
                         </div>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-                <input ref="input" class="hidden" accept="*" type="file" @change="val">
+                <input ref="input" class="hidden" accept="image/*" type="file" @change="val">
                 <button type="submit" class="bg-[#00DC82] pt-0.5 pb-1 rounded-xl text-xl tracking-[0.1rem]">{{ btn }}</button>
             </form>
         </div>
