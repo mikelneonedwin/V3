@@ -52,4 +52,5 @@
             </div>
         </div>
     </section>
+    <section v-else class="font-bold md:text-center text-red-500 text-4xl mt-8 md:mt-0 md:text-7xl">THIS USER IS YET TO UPLOAD A PROJECT</section>
 </template>
