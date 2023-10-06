@@ -1,5 +1,8 @@
 <script setup>
     const nav = ref(false);
+    const { value:user } = await useFetch(`/api/stats/${useCookie('_v3_id').value}`);
+
+    const hasProject = Object.keys(user.work).length;
 </script>
 
 <template>
@@ -13,7 +16,7 @@
                 <div class="flex mt-4 flex-col gap-4">
                     <NuxtLink href="/"><i class="material-icons">leaderboard</i>Leaderboards</NuxtLink>
                     <NuxtLink href="/submit"><i class="material-icons">add_circle</i>Submit Project</NuxtLink>
-                    <NuxtLink href="/dashboard"><i class="material-icons">dashboard</i>My Dashboard</NuxtLink>
+                    <NuxtLink v-if="hasProject" href="/dashboard"><i class="material-icons">dashboard</i>My Dashboard</NuxtLink>
                     <NuxtLink href="/info"><i class="material-icons">info</i>Info</NuxtLink>
                 </div>
             </div>
