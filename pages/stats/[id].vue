@@ -2,8 +2,8 @@
     const { data } = await useAsyncData('load', load);
     const { id } = useRoute().params;
     const user = data.value.stats.find(a => a.id == id);
-    const Day = ref(Object.keys(user.value.work)[0] || null);
-    const screenx = computed(() => user.value.work[Day.value]);
+    const Day = ref(Object.keys(user.work)[0] || null);
+    const screenx = computed(() => user.work[Day.value]);
 </script>
 
 <template>
