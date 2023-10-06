@@ -29,6 +29,7 @@ export default defineEventHandler(async event => {
     const toDB = {
         description: data.description,
         link: data.link,
+        files: [],
         ...( data.languages ? { languages: data.languages } : {}),
         ...( data.tools ? { tools: data.tools } : {}),
         ...( data.frameworks ? { frameworks: data.frameworks } : {}),
@@ -39,9 +40,8 @@ export default defineEventHandler(async event => {
     const files = Object.keys(data).filter(a => a.startsWith('file-')).map(a => data[a]);
     for(const file of files) {
         const index = files.indexOf(file) + 1;
-        const url = await patchFile(`V3/${user!.key}/${index}`, file);
-        if(toDB.files) toDB.files.push(url);
-        else toDB.files = [ url ];
+        const url = await patchFile(`V3/${user!.key}/${data.day}/${index}`, file);
+        toDB.files.push(url);
     };
     
     await set(ref(db, `V3/${user!.key}/uploads/${data.day}`), toDB);
