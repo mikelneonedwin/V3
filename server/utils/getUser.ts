@@ -1,7 +1,7 @@
 import { child, get, ref } from "firebase/database";
 import { db } from "~/firebase";
 
-export async function getUser(userId:string): Promise<{ exists(): boolean, val(): { name: string, key: string, password: string, email: string, id: string, uploads?: Record<string, { files?: Record<number, string>, languages?: string[], description: string, link: string, repo?: string, tools?: string[], frameworks?: string[] }> } | undefined }> {
+export async function getUser(userId:string): Promise<{ exists(): boolean, val(): { name: string, key: string, password: string, email: string, id: number, uploads?: Record<string, { files?: Record<number, string>, languages?: string[], description: string, link: string, repo?: string, tools?: string[], frameworks?: string[] }> } | undefined }> {
     const user = await get(child(ref(db), 'V3'))
     .then(snapshot => {
         if(!snapshot.exists()) return null;

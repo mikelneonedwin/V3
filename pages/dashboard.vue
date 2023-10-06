@@ -1,7 +1,8 @@
 <script setup>
-    const { data: user } = await useFetch(`/api/stats/${useCookie('_v3_id').value}`);
-    const Day = ref(Object.keys(user.value.work)[0] || null);
-    const screenx = computed(() => user.value.work[Day.value]);
+    const { data } = await useAsyncData('load', load);
+    const user = data.value.stats.find(a => a.id == useCookie('_v3_id').value);
+    const Day = ref(Object.keys(user.work)[0] || null);
+    const screenx = computed(() => user.work[Day.value]);
 
     function handleSubmit(){
         const { value:day } = Day;

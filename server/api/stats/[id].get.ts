@@ -1,16 +1,12 @@
 export default defineEventHandler(async event => {
-    const id = getRouterParam(event, 'id');
+    const id = getRouterParam(event, 'id')!;
     const user = await getUser(id!);
     if(!user.exists()){
         setResponseStatus(event, 404, 'User not found!')
-        return {
-            error: {
-                msg: 'User not found!'
-            }
-        }
+        return { error: { msg: 'User not found!' } }
     }
-    const { uploads, name } = user.val()! as { uploads: Record<string, object>, name: string };
+    const { uploads, name, id:idd } = user.val()! as { uploads: Record<string, object>, name: string, id: number };
     const resp:Record<string, object> = { };
     for(const key in uploads) if(uploads![key]) resp[key] = uploads![key];
-    return { name, work: resp };
+    return { name, work: resp, id: idd };
 })

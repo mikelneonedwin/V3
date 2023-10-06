@@ -1,6 +1,6 @@
 <script setup>
-    const { data:stats } = await useFetch('/api/leaderboards');
-    stats.value.forEach((a) => a.img = svgUrl(a.name));
+    const { data: { value: { leaderboards:stats } } } = await useAsyncData('load', load);
+    stats.forEach((a) => a.img = svgUrl(a.name));
 </script>
 
 <template>
