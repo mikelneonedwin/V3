@@ -1,6 +1,6 @@
 <script setup>
     const nav = ref(false);
-    const { value:user } = await useFetch(`/api/stats/${useCookie('_v3_id').value}`);
+    const { data:user } = await useFetch(`/api/stats/${useCookie('_v3_id').value}`);
 
     const hasProject = Object.keys(user.work).length;
 </script>
