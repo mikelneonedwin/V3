@@ -1,14 +1,14 @@
 <script setup>
     const nav = ref(false);
-    const { data:user } = await useFetch(`/api/stats/${useCookie('_v3_id').value}`);
-
-    const hasProject = Object.keys(user.value.work).length;
+    const { data } = await useAsyncData('load', load);
+    const user = data.value.stats.find(a => a.id == useCookie('_v3_id').value);
+    const hasProject = Object.keys(user.work).length;
 </script>
 
 <template>
     <section class="md:flex items-start h-screen w-screen overflow-x-hidden box-border">
         <nav @click="nav = false" :class="{'w-0': !nav, 'w-full': nav}" class="md:w-[30%] z-20 grid grid-cols-5 items-start fixed top-0 md:static overflow-x-hidden md:block transition-all duration-300 h-full md:p-2 pt-0 text-white lg:w-[17%] md:bg-[#202123]">
-            <div class="bg-[#202123] md:bg-transparent col-span-3 h-full md:h-auto">
+            <div class="bg-[#a6b0c4] md:bg-transparent col-span-3 h-full md:h-auto">
                 <div class="flex gap-2 px-3.5 items-center">
                     <img src="/favicon.ico" class="h-10">
                     <span class="text-3xl font-bold">V3</span>
@@ -17,7 +17,7 @@
                     <NuxtLink href="/"><i class="material-icons">leaderboard</i>Leaderboards</NuxtLink>
                     <NuxtLink href="/submit"><i class="material-icons">add_circle</i>Submit Project</NuxtLink>
                     <NuxtLink v-if="hasProject" href="/dashboard"><i class="material-icons">dashboard</i>My Dashboard</NuxtLink>
-                    <NuxtLink href="/info"><i class="material-icons">info</i>Info</NuxtLink>
+                    <NuxtLink v-if="user.admin" href="/admin"><i class="material-icons">supervisor_account</i>Admin</NuxtLink>
                 </div>
             </div>
             <div class="h-full col-span-2 bg-black/70 md:hidden"></div>

@@ -5,8 +5,8 @@ export default defineEventHandler(async event => {
         setResponseStatus(event, 404, 'User not found!')
         return { error: { msg: 'User not found!' } }
     }
-    const { uploads, name, id:idd } = user.val()! as { uploads: Record<string, object>, name: string, id: number };
+    const { uploads, name, id:idd, admin } = user.val()! as { uploads: Record<string, object>, admin?: boolean, name: string, id: number };
     const resp:Record<string, object> = { };
     for(const key in uploads) if(uploads![key]) resp[key] = uploads![key];
-    return { name, work: resp, id: idd };
+    return { name, work: resp, id: idd, ... ( admin ? { admin } : {} )};
 })

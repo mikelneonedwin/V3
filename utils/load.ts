@@ -9,6 +9,7 @@ interface StatData {
         tools?: string[],
         languages?: string[]
     }>,
+    admin?: boolean,
     id: number
 }
 
