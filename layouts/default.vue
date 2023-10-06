@@ -2,7 +2,7 @@
     const nav = ref(false);
     const { data:user } = await useFetch(`/api/stats/${useCookie('_v3_id').value}`);
 
-    const hasProject = Object.keys(user.work).length;
+    const hasProject = Object.keys(user.value.work).length;
 </script>
 
 <template>
