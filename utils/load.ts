@@ -24,9 +24,7 @@ const state: { hasData: boolean, leaderboards: LeaderBoard[], stats: StatData[] 
 if(process.client) Object.assign(state, useNuxtApp().payload.data.load);
 
 export async function load(){
-    if(process.client) console.info('consulted on client');
     if(!state.hasData) {
-        if(process.client) console.info ('fetched on client');
         state.leaderboards = (await $fetch('/api/leaderboards'));
         for(const id of state.leaderboards.map(a => a.id)) state.stats.push(await $fetch(`/api/stats/${id}`));
         state.hasData = true;
