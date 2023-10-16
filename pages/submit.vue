@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import data from '~/utils/data.json';
-    const day = (new Date().getDay()) + 1;
+    const day = (new Date().getDate());
     const form = reactive({ link: '', repo: '', desc: '', day, files: [] as Blob[] });
     const { languages, tools, frameworks } = reactive(data);
     const input = ref(null) as unknown as HTMLInputElement;
