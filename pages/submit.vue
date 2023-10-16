@@ -91,7 +91,7 @@
                         <span>Uploading for day:</span>
                     </div>
                     <div class="!whitespace-nowrap !block btn w-full overflow-x-auto scroll" style="scrollbar-width: none">
-                        <button type="button" @click="form.day = day" :class="{'!bg-[#00DC82]': form.day == day}" v-for="day in daysLeft" :key="day" class="text-white btn">{{ day }}</button>
+                        <button type="button" @click="form.day = day" :class="{'!bg-[#00DC82]': form.day == day, '!bg-[#304050]': form.day != day }" v-for="day of daysLeft" :key="day" class="text-white btn">{{ day }}</button>
                     </div>
                 </div>
                 <div class="input">
